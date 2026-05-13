@@ -32,6 +32,6 @@ A diferencia de la construcción tradicional, mi flujo de trabajo está potencia
 ## 📬 Contacto & Negocios
 Si buscas un servicio de construcción que combine la experiencia en terreno con la precisión de la tecnología moderna:
 
-💬 **[+569917917778]**  
+💬 **[+56991791778]**  
 📧 **[onelconstrucciones@gmail.com]**
 📍 **Viña del Mar | Valparaiso | Curauma**
