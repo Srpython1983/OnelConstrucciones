@@ -1,20 +1,37 @@
-# Protocolo Técnico: Onel Construcciones - Vivienda 90m²
+# Onel Construcciones 🏗️
+### Vivienda Industrializada & Remodelación Técnica con IA
 
-Este documento define los estándares para que la IA (Claude) actúe como el calculista y gestor técnico de la empresa.
+Especialista en el desarrollo de **viviendas modulares (36, 60 y 90 m²)** y terminaciones de alto estándar en la Región de Valparaíso, Chile. 
 
-## 1. Especificaciones del Modelo 90m²
-- **Material Base:** Pino seco (especificar escuadrías: 2x3, 2x4, etc.).
-- **Sistema:** Panelizado industrializado para montaje rápido.
-- **Áreas:** Living-comedor, cocina, 3 dormitorios, 2 baños.
+---
 
-## 2. Lógica de Cubicaciones (Cálculo de Materiales)
-Cuando se solicite un presupuesto, Claude debe aplicar:
-- **Factor de pérdida:** 10% en madera y 7% en revestimientos.
-- **Pisos:** Cálculo basado en m² + rendimiento de caja de piso flotante.
-- **Tornillería:** Proporción de 40 tornillos por m² de estructura.
+## 🚀 Innovación y Tecnología
+A diferencia de la construcción tradicional, mi flujo de trabajo está potenciado por **Inteligencia Artificial**:
+*   **Integración Claude + GitHub:** Utilizo Claude para el análisis de datos técnicos, optimización de cubicaciones y generación de documentación precisa, sincronizando cada avance directamente en mis repositorios de GitHub.
+*   **Control de Versiones:** Cada cambio en los planos o presupuestos de mis clientes queda registrado, garantizando transparencia total y cero errores en la ejecución de obra.
 
-## 3. Formato de Salida para el Cliente
-Cada vez que generes un reporte para un comprador de GitHub, usa este formato:
-- Resumen ejecutivo de costos.
-- Lista detallada de materiales (SKU sugerido).
-- Cronograma estimado de montaje (Semana 1 a Semana 4).
+---
+
+## 🛠️ Servicios y Productos Monetizables
+
+| Producto / Servicio | Detalle Técnico | Método de Adquisición |
+| :--- | :--- | :--- |
+| **Kits Digitales de Vivienda** | Planos, lista de materiales y manual de montaje (Pino Seco). | [Consultar por Repositorio Privado] |
+| **Gestión de Obra con IA** | Optimización de costos y tiempos mediante análisis de Claude. | [Servicio de Consultoría] |
+| **Terminaciones Pro** | Estándares de instalación de pisos, puertas y carpintería fina. | [Contratar Servicios] |
+
+---
+
+## 📈 Proyectos en Curso
+*   🏠 **Módulo 60m² (Curauma/Viña):** Optimización de estructura industrializada.
+*   🎨 **Remodelación Técnica:** Estándares de pintura y pisos flotantes de alto tráfico.
+*   📊 **Logística Regional:** Base de datos de costos de materiales en la V Región actualizada por IA.
+
+---
+
+## 📬 Contacto & Negocios
+Si buscas un servicio de construcción que combine la experiencia en terreno con la precisión de la tecnología moderna:
+
+💬 **[+569917917778]**  
+📧 **[onelconstrucciones@gmail.com]**
+📍 **Viña del Mar | Valparaiso | Curauma**
