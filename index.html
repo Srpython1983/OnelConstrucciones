@@ -6,6 +6,15 @@
   <title>Onel Construcciones — Vivienda Industrializada & IA · Valparaíso</title>
   <meta name="description" content="Especialistas en viviendas modulares de 36, 60 y 90 m² con madera nativa y pino seco. Construcción con tecnología IA en la Región de Valparaíso, Chile.">
   <meta name="keywords" content="construcción viña del mar, viviendas modulares valparaíso, construcción madera nativa chile, remodelación curauma, construcción industrializada">
+  <!-- Open Graph — preview en WhatsApp, Instagram, LinkedIn -->
+  <meta property="og:type"         content="website">
+  <meta property="og:url"          content="https://srpython1983.github.io/OnelConstrucciones/">
+  <meta property="og:title"        content="Onel Construcciones — Vivienda Modular con IA · Valparaíso">
+  <meta property="og:description"  content="Viviendas modulares 36, 60 y 90 m² con madera nativa y pino seco. Construcción potenciada con IA en la V Región.">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Onel Construcciones — Vivienda Modular con IA">
+  <meta name="twitter:description" content="Viviendas modulares con madera nativa y pino seco. V Región, Chile.">
+  <link rel="canonical"            href="https://srpython1983.github.io/OnelConstrucciones/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -30,6 +39,21 @@
       line-height: 1.7;
       overflow-x: hidden;
     }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ── NAV ── */
     nav {
@@ -69,7 +93,36 @@
     .nav-cta:hover { background: var(--gold); color: var(--white) !important; }
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 62px; left: 0; right: 0;
+        background: rgba(244,239,228,0.98);
+        backdrop-filter: blur(12px);
+        padding: 20px 5% 28px;
+        gap: 4px;
+        border-bottom: 1px solid rgba(74,46,20,0.1);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      }
+      .nav-links.open a {
+        font-size: 1rem; padding: 10px 0;
+        border-bottom: 1px solid rgba(74,46,20,0.06);
+      }
+      .nav-links.open .nav-cta { margin-top: 8px; text-align: center; }
     }
+    .hamburger {
+      display: none; flex-direction: column;
+      gap: 5px; cursor: pointer; padding: 4px;
+      background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--brown); border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (max-width: 768px) { .hamburger { display: flex; } }
 
     /* ── HERO ── */
     .hero {
@@ -416,17 +469,47 @@
     .ai-feature-title { font-size: 0.95rem; font-weight: 500; color: var(--dark); margin-bottom: 4px; }
     .ai-feature-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
     .ai-visual {
-      background: var(--dark);
-      border-radius: 4px;
-      padding: 32px;
-      font-family: 'IBM Plex Sans', monospace;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.8;
+      background: #0D1117;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
-    .ai-visual .comment { color: rgba(184,131,42,0.7); }
-    .ai-visual .key { color: #7EC8A4; }
-    .ai-visual .val { color: #FAC775; }
+    .terminal-bar {
+      background: #1C2128;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .t-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .t-title {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      margin-left: 8px;
+      font-family: 'IBM Plex Sans', monospace;
+    }
+    .terminal-code {
+      padding: 24px;
+      font-family: 'IBM Plex Sans', monospace;
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.75);
+      white-space: pre;
+      overflow-x: auto;
+      margin: 0;
+      background: transparent;
+    }
+    .c-comment { color: #6A9955; }
+    .c-key     { color: #9CDCFE; }
+    .c-str     { color: #CE9178; }
+    .c-num     { color: #B5CEA8; }
+    .c-bool    { color: #569CD6; }
     @media (max-width: 768px) {
       .ai-grid { grid-template-columns: 1fr; }
     }
@@ -521,19 +604,68 @@
 
     /* ── FOOTER ── */
     footer {
-      background: var(--dark);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 24px 5%;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
+      background: #0D0C09;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 60px 5% 0; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .footer-brand {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 700;
-      color: rgba(255,255,255,0.4);
+      font-size: 1.2rem; font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 12px;
+      display: block;
     }
     .footer-brand span { color: var(--gold); }
-    .footer-text { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .footer-social a:hover { background: rgba(184,131,42,0.2); }
+    .footer-col-title {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 8px;
+      padding: 18px 0;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.18);
+    }
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+    }
 
     /* ── WHATSAPP FLOAT ── */
     .wa-float {
@@ -562,14 +694,17 @@
 <!-- Navegación -->
 <nav>
   <a href="#inicio" class="nav-brand">Onel <span>Construcciones</span></a>
-  <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#maderas">Maderas</a></li>
-    <li><a href="#kits">Kits Digitales</a></li>
-    <li><a href="#tecnologia">Tecnología</a></li>
-    <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#contacto" class="nav-cta">Cotizar</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#servicios"   onclick="closeMenu()">Servicios</a></li>
+    <li><a href="#maderas"     onclick="closeMenu()">Maderas</a></li>
+    <li><a href="#kits"        onclick="closeMenu()">Kits Digitales</a></li>
+    <li><a href="#tecnologia"  onclick="closeMenu()">Tecnología</a></li>
+    <li><a href="#proyectos"   onclick="closeMenu()">Proyectos</a></li>
+    <li><a href="#contacto"    onclick="closeMenu()" class="nav-cta">Cotizar</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- Hero -->
@@ -646,7 +781,7 @@
     <h2 class="section-title">Servicios & Soluciones</h2>
     <p class="section-desc">Desde la vivienda modular completa hasta la terminación de detalle. Todo con precisión técnica y respaldo documental.</p>
     <div class="services-grid">
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-1">
         <div class="service-num">01</div>
         <div class="service-title">Vivienda Modular Industrializada</div>
         <div class="service-desc">Construcción de viviendas en módulos de 36, 60 y 90 m² con estructura de pino seco. Sistema optimizado para reducir tiempos y costos sin sacrificar calidad.</div>
@@ -693,25 +828,25 @@
     <h2 class="section-title">Maderas de Calidad</h2>
     <p class="section-desc">Trabajamos con las mejores maderas disponibles en Chile, priorizando la sustentabilidad y la reutilización responsable.</p>
     <div class="wood-grid">
-      <div class="wood-card">
+      <div class="wood-card reveal reveal-delay-1">
         <span class="wood-icon">🌲</span>
         <div class="wood-name">Pino Seco Estructural</div>
         <div class="wood-desc">Pino radiata secado al horno. Ideal para estructura de viviendas modulares: estable, liviano y de excelente relación resistencia/costo.</div>
         <span class="wood-badge">Uso principal</span>
       </div>
-      <div class="wood-card">
+      <div class="wood-card reveal reveal-delay-2">
         <span class="wood-icon">🌳</span>
         <div class="wood-name">Roble Chileno</div>
         <div class="wood-desc">Madera nativa de alta dureza. Perfecta para pisos, revestimientos y piezas decorativas que requieren resistencia y estética premium.</div>
         <span class="wood-badge">Madera nativa</span>
       </div>
-      <div class="wood-card">
+      <div class="wood-card reveal reveal-delay-3">
         <span class="wood-icon">🍂</span>
         <div class="wood-name">Raulí</div>
         <div class="wood-desc">Especie nativa del sur de Chile. Excelente trabajabilidad, veta hermosa y durabilidad comprobada para muebles, puertas y carpintería fina.</div>
         <span class="wood-badge">Madera nativa</span>
       </div>
-      <div class="wood-card">
+      <div class="wood-card reveal reveal-delay-4">
         <span class="wood-icon">♻️</span>
         <div class="wood-name">Madera Recuperada</div>
         <div class="wood-desc">Reutilizamos madera de demoliciones y obras antiguas con valor estructural y estético. Reducción de residuos y costo para proyectos sustentables.</div>
@@ -728,7 +863,7 @@
     <h2 class="section-title">Kits Digitales de Vivienda</h2>
     <p class="section-desc">Descarga los planos, cubicaciones y manuales de montaje de nuestras viviendas modulares. Todo lo que necesitas para construir o licitar.</p>
     <div class="products-grid">
-      <div class="product-card">
+      <div class="product-card reveal reveal-delay-1">
         <div class="product-size">36 m²</div>
         <div class="product-title">Módulo Básico · Kit Digital</div>
         <ul class="product-features">
@@ -740,7 +875,7 @@
         </ul>
         <a href="https://wa.me/56991791778?text=Quiero%20el%20Kit%20Digital%2036m²" class="product-cta">Consultar precio →</a>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal reveal-delay-2">
         <span class="product-popular">Más vendido</span>
         <div class="product-size">60 m²</div>
         <div class="product-title">Módulo Estándar · Kit Digital</div>
@@ -754,7 +889,7 @@
         </ul>
         <a href="https://wa.me/56991791778?text=Quiero%20el%20Kit%20Digital%2060m²" class="product-cta">Consultar precio →</a>
       </div>
-      <div class="product-card">
+      <div class="product-card reveal reveal-delay-3">
         <div class="product-size">90 m²</div>
         <div class="product-title">Módulo Ampliado · Kit Digital</div>
         <ul class="product-features">
@@ -811,18 +946,41 @@
         </div>
       </div>
       <div class="ai-visual">
-        <span class="comment">// Análisis de cubicación — Módulo 60m²</span><br>
-        {<br>
-        &nbsp;&nbsp;<span class="key">"proyecto"</span>: <span class="val">"Curauma — Viña del Mar"</span>,<br>
-        &nbsp;&nbsp;<span class="key">"superficie"</span>: <span class="val">"60 m²"</span>,<br>
-        &nbsp;&nbsp;<span class="key">"estructura"</span>: <span class="val">"Pino seco 2x4 y 2x6"</span>,<br>
-        &nbsp;&nbsp;<span class="key">"madera_nativa"</span>: <span class="val">"Roble — pisos y detalles"</span>,<br>
-        &nbsp;&nbsp;<span class="key">"materiales_optimizados"</span>: <span class="val">true</span>,<br>
-        &nbsp;&nbsp;<span class="key">"ahorro_vs_tradicional"</span>: <span class="val">"18%"</span>,<br>
-        &nbsp;&nbsp;<span class="key">"version_github"</span>: <span class="val">"v2.3.1"</span>,<br>
-        &nbsp;&nbsp;<span class="key">"actualizado"</span>: <span class="val">"2025"</span><br>
-        }<br><br>
-        <span class="comment">// Potenciado por Claude AI + GitHub</span>
+        <div class="terminal-bar">
+          <span class="t-dot" style="background:#FF5F57"></span>
+          <span class="t-dot" style="background:#FFBD2E"></span>
+          <span class="t-dot" style="background:#28C840"></span>
+          <span class="t-title">cubicacion_modulo_60m2.json</span>
+        </div>
+        <pre class="terminal-code"><span class="c-comment">// Análisis de cubicación — Módulo 60m²</span>
+<span class="c-comment">// Onel Construcciones · Curauma / Viña del Mar</span>
+
+{
+  <span class="c-key">"proyecto"</span>:           <span class="c-str">"Módulo 60m² — Curauma, V Región"</span>,
+  <span class="c-key">"contratista"</span>:        <span class="c-str">"Onel Construcciones"</span>,
+  <span class="c-key">"superficie"</span>:         <span class="c-num">60</span>,
+  <span class="c-key">"unidad"</span>:             <span class="c-str">"m²"</span>,
+
+  <span class="c-key">"estructura"</span>: {
+    <span class="c-key">"tipo"</span>:             <span class="c-str">"Pino seco radiata"</span>,
+    <span class="c-key">"piezas_2x4"</span>:       <span class="c-num">48</span>,
+    <span class="c-key">"piezas_2x6"</span>:       <span class="c-num">24</span>,
+    <span class="c-key">"largo_metros"</span>:     <span class="c-num">3.0</span>
+  },
+
+  <span class="c-key">"madera_nativa"</span>: {
+    <span class="c-key">"especie"</span>:          <span class="c-str">"Roble chileno"</span>,
+    <span class="c-key">"uso"</span>:              <span class="c-str">"Pisos y terminaciones"</span>,
+    <span class="c-key">"m2_requeridos"</span>:    <span class="c-num">42</span>
+  },
+
+  <span class="c-key">"optimizacion_ia"</span>: <span class="c-bool">true</span>,
+  <span class="c-key">"region_precios"</span>:   <span class="c-str">"V Región — actualizado 2025"</span>,
+  <span class="c-key">"version"</span>:          <span class="c-str">"v2.3.1"</span>,
+  <span class="c-key">"github_repo"</span>:      <span class="c-str">"Srpython1983/OnelConstrucciones"</span>
+}
+
+<span class="c-comment">// ✓ Generado con Claude AI + control de versiones GitHub</span></pre>
       </div>
     </div>
   </div>
@@ -912,9 +1070,50 @@
 
 <!-- Footer -->
 <footer>
-  <div class="footer-brand">Onel <span>Construcciones</span></div>
-  <div class="footer-text">Viña del Mar · Valparaíso · Chile · 2025</div>
-  <div class="footer-text">Construcción inteligente con madera real</div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-brand">Onel <span>Construcciones</span></div>
+        <p class="footer-tagline">Construcción inteligente con madera real.<br>Viña del Mar · Valparaíso · Chile</p>
+        <div class="footer-social">
+          <a href="https://wa.me/56991791778" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+          <a href="mailto:onelconstrucciones@gmail.com" aria-label="Email">📧</a>
+          <a href="https://github.com/Srpython1983/OnelConstrucciones" target="_blank" rel="noopener" aria-label="GitHub">🔗</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Servicios</div>
+        <ul class="footer-links">
+          <li><a href="#servicios">Vivienda Modular</a></li>
+          <li><a href="#servicios">Remodelación Pro</a></li>
+          <li><a href="#servicios">Madera Nativa</a></li>
+          <li><a href="#servicios">Gestión con IA</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Productos</div>
+        <ul class="footer-links">
+          <li><a href="#kits">Kit Digital 36 m²</a></li>
+          <li><a href="#kits">Kit Digital 60 m²</a></li>
+          <li><a href="#kits">Kit Digital 90 m²</a></li>
+          <li><a href="#contacto">Consultoría IA</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contacto</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/56991791778">+56 9 9179 1778</a></li>
+          <li><a href="mailto:onelconstrucciones@gmail.com">onelconstrucciones@gmail.com</a></li>
+          <li><span style="color:rgba(255,255,255,0.3)">Viña del Mar</span></li>
+          <li><span style="color:rgba(255,255,255,0.3)">Curauma · V Región</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Onel Construcciones · Todos los derechos reservados</span>
+      <span>Potenciado con Claude AI + GitHub</span>
+    </div>
+  </div>
 </footer>
 
 <!-- WhatsApp flotante -->
@@ -924,14 +1123,109 @@
 </a>
 
 <script>
-function sendWhatsApp() {
-  const name = document.querySelector('input[placeholder="Tu nombre"]').value;
-  const contact = document.querySelector('input[placeholder="contacto@ejemplo.cl o +56 9..."]').value;
-  const type = document.querySelector('select').value;
-  const desc = document.querySelector('textarea').value;
-  const msg = `Hola Onel! Mi nombre es ${name || '[sin nombre]'}. Contacto: ${contact || '[sin contacto]'}. Proyecto: ${type}. Descripción: ${desc || '(sin descripción)'}`;
-  window.open('https://wa.me/56991791778?text=' + encodeURIComponent(msg), '_blank');
-}
+  /* ── MENÚ HAMBURGUESA ── */
+  function toggleMenu() {
+    const nav  = document.getElementById('navLinks');
+    const btn  = document.getElementById('hamburger');
+    nav.classList.toggle('open');
+    btn.classList.toggle('active');
+  }
+  function closeMenu() {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('active');
+  }
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('hamburger');
+    if (!nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+      btn.classList.remove('active');
+    }
+  });
+
+  /* ── ANIMACIONES AL HACER SCROLL ── */
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── NAV: SOMBRA AL HACER SCROLL ── */
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    nav.style.boxShadow = window.scrollY > 20
+      ? '0 2px 20px rgba(0,0,0,0.1)'
+      : 'none';
+  });
+
+  /* ── FORMULARIO CON VALIDACIÓN + ENVÍO POR WHATSAPP ── */
+  function sendWhatsApp() {
+    const nameEl    = document.querySelector('input[placeholder="Tu nombre"]');
+    const contactEl = document.querySelector('input[placeholder="contacto@ejemplo.cl o +56 9..."]');
+    const typeEl    = document.querySelector('select');
+    const descEl    = document.querySelector('textarea');
+    const btn       = document.querySelector('.btn-submit');
+
+    // Limpiar errores anteriores
+    [nameEl, contactEl, descEl].forEach(el => el.style.borderColor = '');
+
+    let valid = true;
+
+    if (!nameEl.value.trim()) {
+      nameEl.style.borderColor = '#FF6B6B';
+      nameEl.focus();
+      valid = false;
+    }
+    if (!contactEl.value.trim()) {
+      contactEl.style.borderColor = '#FF6B6B';
+      if (valid) contactEl.focus();
+      valid = false;
+    }
+    if (!descEl.value.trim()) {
+      descEl.style.borderColor = '#FF6B6B';
+      if (valid) descEl.focus();
+      valid = false;
+    }
+
+    if (!valid) {
+      btn.textContent = '⚠️ Completa los campos en rojo';
+      btn.style.background = '#8B0000';
+      setTimeout(() => {
+        btn.textContent = 'Enviar por WhatsApp →';
+        btn.style.background = '';
+      }, 2500);
+      return;
+    }
+
+    // Todo OK — armar mensaje y abrir WhatsApp
+    const msg = `Hola Onel! 👋\n\n` +
+      `*Nombre:* ${nameEl.value.trim()}\n` +
+      `*Contacto:* ${contactEl.value.trim()}\n` +
+      `*Proyecto:* ${typeEl.value}\n` +
+      `*Descripción:* ${descEl.value.trim()}\n\n` +
+      `_Enviado desde onelconstrucciones.github.io_`;
+
+    btn.textContent = '✓ Abriendo WhatsApp...';
+    btn.style.background = '#25D366';
+
+    window.open('https://wa.me/56991791778?text=' + encodeURIComponent(msg), '_blank');
+
+    setTimeout(() => {
+      nameEl.value = '';
+      contactEl.value = '';
+      descEl.value = '';
+      btn.textContent = 'Enviar por WhatsApp →';
+      btn.style.background = '';
+    }, 2000);
+  }
 </script>
 
 </body>
